@@ -22,7 +22,7 @@ module QueriesHelper
                       css = 'query'
                       css << ' selected' if query == @query
                       css << " visible#{query.visibility}"
-                      content_tag('li', link_to(query.name, url_params.permit(:query_id).merge(:query_id => query), :class => css,
+                      content_tag('li', link_to(query.name, request.params.merge({:query_id => query}), :class => css,
                                                 :title => l(:field_author) + ": #{query.user.name}"))
                     }.join("\n").html_safe,
                     :class => 'queries'
